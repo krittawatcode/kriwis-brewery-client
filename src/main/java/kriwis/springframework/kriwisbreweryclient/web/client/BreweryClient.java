@@ -11,7 +11,7 @@ import java.net.URI;
 import java.util.UUID;
 
 @Component
-@ConfigurationProperties(value = "sfg.brewery", ignoreInvalidFields = false)
+@ConfigurationProperties(value = "sfg.brewery")
 public class BreweryClient {
 
     public final String BEER_PATH_V1 = "/api/v1/beer/";
@@ -38,7 +38,7 @@ public class BreweryClient {
     }
 
     public void deleteBeer(UUID uuid){
-        restTemplate.delete(apihost + BEER_PATH_V1 + uuid);
+        restTemplate.delete(apihost + BEER_PATH_V1 + uuid.toString());
     }
 
     public void setApihost(String apihost){
@@ -54,7 +54,7 @@ public class BreweryClient {
     }
 
     public void updateCustomer(UUID uuid, CustomerDto customerDto){
-        restTemplate.put(apihost + CUSTOMER_PATH_V1 + "/" + uuid, customerDto);
+        restTemplate.put(apihost + CUSTOMER_PATH_V1 + "/" + uuid.toString(), customerDto);
     }
 
     public void deleteCustomer(UUID uuid){
